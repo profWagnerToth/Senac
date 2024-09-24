@@ -3,7 +3,7 @@
 
 class User{
     //Simulando a obtenção de dados do usuário
-    Public function getUser(){
+    Public function getUsers(){
         //Em um caso real, você teria a conexão com o banco de dados
         return [
             ['id'=>1,'name'=>'João', 'email'=>'joao@email.com'],
