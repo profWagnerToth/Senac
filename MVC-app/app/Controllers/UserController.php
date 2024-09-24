@@ -9,7 +9,7 @@ class UserController extends Controller{
         //Obtem a lista de usuarios do modelo
         $users=$userModel->getUsers();
         //Carrega a view 'users' passando os dados dos usuarios
-        $this->view('users',['users'=>$users]);
+        $this->view('userView',['users'=>$users]);
     }
 }
 ?>
