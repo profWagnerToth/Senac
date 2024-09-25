@@ -8,7 +8,7 @@ class AlunoController extends Controller{
     #Função de listar aluno
     public function listar(){
         $alunoModel= $this->models('Aluno');
-        $alunos = $alunoModel->getAll();
+        $alunos = $alunoModel->listarAlunos();
         $this ->view('../views/listar',['alunos'=>"$alunos"]);
     }
 
