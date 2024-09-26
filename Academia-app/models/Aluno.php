@@ -1,19 +1,23 @@
 <?php 
-    
-class Aluno{    
+
+class Aluno {    
     private $db;  
-    public function __construct(){
-        $this->db=Conexao::novaConexao();
+    
+    // Construtor para inicializar a conexão com o banco de dados
+    public function __construct() {
+        $this->db = Conexao::novaConexao();
     }  
 
-    public function listarAlunos(){
+    // Método para listar todos os alunos
+    public function listarAlunos() {
         $query = $this->db->query("SELECT * FROM alunos");
         return $query->fetchAll(PDO::FETCH_ASSOC);
     }
 
-    public function cadastrarAluno($nome,$idade,$email){
-        $cadAluno = $this->db->prepare("INSERT INTO alunos(nome,idade,email)VALUES(?,?,?)");
-        $cadAluno->execute([$nome,$idade,$email]);
+    // Método para cadastrar um novo aluno
+    public function cadastrarAluno($nome, $idade, $email) {
+        $cadAluno = $this->db->prepare("INSERT INTO alunos (nome, idade, email) VALUES (?, ?, ?)");
+        $cadAluno->execute([$nome, $idade, $email]);
     }     
 }
 ?>
