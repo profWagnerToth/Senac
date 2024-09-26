@@ -2,7 +2,22 @@
 class AlunoController extends Controller{
     #Função de cadastro de aluno
     public function cadastrar(){
-        $this->view('../views/aluno/cadastro');
+        //Verificar se od dados foram enviados via POST para salvar o aluno
+        if($_SERVER['REQUEST_METHOD']==='POST'){
+            //Captura os dados do formulário
+            $nome = $_POST['nome'];
+            $idade = $_POST['idade'];
+            $email = $_POST['email'];
+
+            //Criar uma instância do model Aluno e chamar o método de cadastro
+            $alunoModel = $this->models('Aluno');
+            $alunoModel ->cadastrar_aluno($nome,$idade,$email); 
+
+            header('Location: ../aluno/listar');
+        }
+
+        //Exibe o formulário de cadastro se for um GET
+        $this->view('aluno/cadastro');
     }
 
     #Função de listar aluno
