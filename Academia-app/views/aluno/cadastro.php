@@ -1,27 +1,37 @@
 <?php 
-include '../../includes/header.php'
+include '../../includes/header.php';
 ?>
 <div class="container mt-5">
     <h2> Cadastro de Aluno</h2>
-    <form action="..bd/cadastrar_aluno.php" method="POST">
+    <form action="../../controllers/AlunoController.php?action=cadastrar" method="POST">
         <div class="mb-3">
             <label for="nome" class="form-label">Nome:</label>
             <input type="text" class="form-control" id="nome" name="nome" required>
         </div>
+        
+                <div class="mb-3">
+                    <label for="email" class="form-label">Email:</label>
+                    <input type="email" class="form-control" id="email" name="email">
+                </div>
 
         <div class="mb-3">
-        <label for="idade" class="form-label">idade:</label>
-        <input type="text" class="form-control" id="idade" name="idade" required>
+            <label for="telefone" class="form-label">Telefone:</label>
+            <input type="text" class="form-control" id="telefone" name="telefone">
         </div>
 
         <div class="mb-3">
-        <label for="email" class="form-label">email:</label>
-        <input type="text" class="form-control" id="email" name="email" required>
+            <label for="data_nascimento" class="form-label">Data de Nascimento:</label>
+            <input type="date" class="form-control" id="data_nascimento" name="data_nascimento">
+        </div>
+
+        <div class="mb-3">
+            <label for="genero" class="form-label">genero:</label>
+            <input type="text" class="form-control" id="genero" name="genero">
         </div>
 
         <button type="submit" class="btn btn-primary">Cadastrar</button>
     </form>
 </div>
 <?php 
-include '../../includes/footer.php'
+include '../../includes/footer.php';
 ?>
