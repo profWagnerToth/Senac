@@ -4,7 +4,7 @@ class AlunoController extends Controller {
     public function cadastrar() {
         // Verifica se os dados foram enviados via POST para salvar o aluno
         if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-            $alunoModel = $this->model('Aluno');
+            $alunoModel = $this->models('Aluno');
             // Supondo que o formulário de cadastro tenha um campo 'nome'
             $nome = $_POST['nome'];
             $alunoModel->cadastrarAluno($nome);
@@ -17,14 +17,14 @@ class AlunoController extends Controller {
 
     // Função de listar alunos
     public function listar() {
-        $alunoModel = $this->model('Aluno'); // Corrigi 'models' para 'model'
+        $alunoModel = $this->models('Aluno'); // Corrigi 'models' para 'model'
         $alunos = $alunoModel->listarAlunos();
         $this->view('alunos/listar', ['alunos' => $alunos]); // Ajusta caminho e passa o array direto
     }
 
     // Função de registrar Treino
     public function registrarTreino($alunoId, $treinoId) {
-        $treinoModel = $this->model('Treino'); // Corrigi 'models' para 'model'
+        $treinoModel = $this->models('Treino'); // Corrigi 'models' para 'model'
         $treinoModel->registrarTreino($alunoId, $treinoId);
         header('Location: /aluno/treinos/' . $alunoId); // Corrigi o caminho de redirecionamento
     }
