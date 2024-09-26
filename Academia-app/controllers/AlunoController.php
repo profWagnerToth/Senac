@@ -13,6 +13,7 @@ class AlunoController extends Controller {
             // Exibe o formulário de cadastro se for um GET
             $this->view('alunos/cadastro'); // Corrigi o caminho para a view correta
         }
+
     }
 
     // Função de listar alunos
