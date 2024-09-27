@@ -3,7 +3,7 @@ include_once '../models/Aluno.php'; // Certifique-se de que o caminho está corr
 
 // Verifique se a ação foi passada na URL
 if (isset($_GET['action']) && $_GET['action'] === 'cadastrar') {
-    echo "Chamando a função cadastrar()!<br>";  // Depuração: Verificar se a rota está funcionando
+    // echo "Chamando a função cadastrar()!<br>";  // Depuração: Verificar se a rota está funcionando
     $controller = new AlunoController();
     $controller->cadastrar();
 } else {
@@ -27,8 +27,9 @@ class AlunoController
 
             if ($nome && $email && $telefone && $data_nascimento && $genero) {
                 $alunoModel = new Aluno();
+                $alunoModel->cadastrarAluno($nome, $email, $telefone, $data_nascimento, $genero);
+                /*
                 try {
-                    $alunoModel->cadastrarAluno($nome, $email, $telefone, $data_nascimento, $genero);
                     echo "Aluno cadastrado com sucesso!<br>";
                 } catch (Exception $e) {
                     echo "Erro ao cadastrar o aluno: " . $e->getMessage();
@@ -38,6 +39,8 @@ class AlunoController
             }
         } else {
             echo "Método não é POST!<br>";
+        } */
+              }
         }
     }
 }
