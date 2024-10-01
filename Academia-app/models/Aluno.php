@@ -20,6 +20,11 @@ class Aluno {
         } catch (PDOException $e) {
             echo "Erro ao gravar no banco de dados: " . $e->getMessage();
         }*/
-    }     
+    }   
+    
+    public function listarAlunos(){
+        $listAluno = $this->db->query("SELECT * FROM Alunos");
+        return $listAluno->fetchAll(PDO::FETCH_ASSOC);
+    }
 }
 ?>
