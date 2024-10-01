@@ -1,5 +1,5 @@
 <?php 
-include ('bd/conexao.php');
+include ('../bd/conexao.php');
 
 class Treino{
     private $db;
@@ -9,7 +9,7 @@ class Treino{
     }
 
     public function cadastrarTreino($descricao, $idAluno, $idProfessor){
-        $cadTreino = $this->db->prepare("INSERT INTO treinos (descricao, idAluno, idProfessor) VALUES (?,?,?)");
+        $cadTreino = $this->db->prepare("INSERT INTO treinos (descricao, aluno_id, professor_id) VALUES (?,?,?)");
 
         $cadTreino->execute([$descricao,$idAluno,$idProfessor]);
     }

@@ -1,5 +1,5 @@
 <?php
-include ('bd/conexao.php');
+include ('../bd/conexao.php');
 
 class Professor{
     private $db;
