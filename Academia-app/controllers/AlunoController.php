@@ -10,6 +10,14 @@ if (isset($_GET['action']) && $_GET['action'] === 'cadastrar') {
     echo "Nenhuma ação foi passada!<br>";  // Depuração: Se não houver ação
 }
 
+if (isset($_GET['action']) && $_GET['action'] === 'listar') {
+    // echo "Chamando a função listar()!<br>";  // Depuração: Verificar se a rota está funcionando
+    $controller = new AlunoController();
+    $controller->listar();
+} else {
+    echo "Nenhuma ação foi passada!<br>";  // Depuração: Se não houver ação
+}
+
 class AlunoController
 {
     public function cadastrar()
@@ -42,6 +50,10 @@ class AlunoController
         } */
               }
         }
+    }
+
+    public function listar(){
+        
     }
 }
 ?>
