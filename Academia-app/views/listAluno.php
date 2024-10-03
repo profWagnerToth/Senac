@@ -1,6 +1,6 @@
 <?php 
     include ('../includes/header.php');
-    include ('../models/aluno.php');
+    include ('../models/aluno.php');    
     $aluno = new Aluno();
     $alunos = $aluno->listarAlunos();
  ?>
