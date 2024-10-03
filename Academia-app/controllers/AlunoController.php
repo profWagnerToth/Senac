@@ -1,5 +1,6 @@
 <?php
-include_once '../models/Aluno.php'; // Certifique-se de que o caminho está correto
+// Usar caminho absoluto para evitar erros de diretório
+include_once dirname(__DIR__) . '/models/Aluno.php';
 
 // Verifique se a ação foi passada na URL
 if (isset($_GET['action']) && $_GET['action'] === 'cadastrar') {
@@ -28,32 +29,20 @@ class AlunoController
             $telefone = $_POST['telefone'];
             $data_nascimento = $_POST['data_nascimento'];
             $genero = $_POST['genero'];
-            
-            /*
-            var_dump($nome, $email, $telefone, $data_nascimento, $genero);  // Depuração: Mostrar os dados
-            */
 
             if ($nome && $email && $telefone && $data_nascimento && $genero) {
                 $alunoModel = new Aluno();
                 $alunoModel->cadastrarAluno($nome, $email, $telefone, $data_nascimento, $genero);
-                /*
-                try {
-                    echo "Aluno cadastrado com sucesso!<br>";
-                } catch (Exception $e) {
-                    echo "Erro ao cadastrar o aluno: " . $e->getMessage();
-                }
-            } else {
-                echo "Dados inválidos!<br>";
+
             }
-        } else {
-            echo "Método não é POST!<br>";
-        } */
-              }
         }
     }
 
-    public function listar(){
-        
+    public function listar()
+    {
+        $alunoModel = new Aluno();
+        $alunoModel->listarAlunos(); 
+        return $alunoModel;
     }
 }
 ?>
