@@ -40,9 +40,9 @@ class AlunoController
 
     public function listar()
     {
-        $alunoModel = new Aluno();
-        $alunoModel->listarAlunos(); 
-        return $alunoModel;
+        $aluno = new Aluno;
+        $alunos = $aluno->listarAlunos();
+        return $alunos;
     }
 }
 ?>

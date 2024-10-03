@@ -1,8 +1,6 @@
 <?php
 // Usar caminho absoluto para evitar erros de diretório
 include_once dirname(__DIR__) . '/bd/conexao.php';
-$aluno = new Aluno;
-$alunos = $aluno->listarAlunos();
 
 class Aluno {    
     private $db;  
