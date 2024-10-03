@@ -1,9 +1,9 @@
 <?php
-include '../../includes/header.php';
+include '../includes/header.php';
 ?>
 <div class="container mt-5">
     <h2> Cadastro de Aluno</h2>
-    <form action="../../controllers/AlunoController.php?action=cadastrar" method="POST">
+    <form action="../controllers/AlunoController.php?action=cadastrar" method="POST">
 
         <div class="mb-3">
             <label for="nome" class="form-label">Nome:</label>
@@ -34,5 +34,5 @@ include '../../includes/header.php';
     </form>
 </div>
 <?php
-include '../../includes/footer.php';
+include '../includes/footer.php';
 ?>
