@@ -1,5 +1,5 @@
 <?php
-include('../../includes/header.php');
+include('../includes/header.php');
 ?>
 <div class="container mt-5">
     <h2>Lista de Alunos</h2>
@@ -31,4 +31,4 @@ include('../../includes/header.php');
         </tbody>
     </table>
 </div>
-<?php include('../../includes/footer.php'); ?>
+<?php include('../includes/footer.php'); ?>

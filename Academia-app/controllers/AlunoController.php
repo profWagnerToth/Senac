@@ -1,5 +1,6 @@
 <?php
-include_once '../models/Aluno.php'; // Certifique-se de que o caminho está correto
+// Usar caminho absoluto para evitar erros de diretório
+include_once dirname(__DIR__) . '/models/Aluno.php';
 
 // A verificação das ações foi reorganizada para corrigir o erro
 if (isset($_GET['action'])) {
@@ -26,10 +27,6 @@ class AlunoController
             $telefone = $_POST['telefone'];
             $data_nascimento = $_POST['data_nascimento'];
             $genero = $_POST['genero'];
-            
-            /*
-            var_dump($nome, $email, $telefone, $data_nascimento, $genero);  // Depuração: Mostrar os dados
-            */
 
             if ($nome && $email && $telefone && $data_nascimento && $genero) {
                 $alunoModel = new Aluno();
@@ -49,26 +46,11 @@ class AlunoController
         }
     }
 
-    public function listar(){
-        $alunoModel = new Aluno(); // Cria uma nova instância do modelo Aluno
-        $alunos = $alunoModel->listarAlunos(); // Captura a lista de alunos        
-        
-        // Depuração: Verifique se a variável $alunos está recebendo os dados corretamente
-        if(empty($alunos)) {
-            echo "Nenhum aluno encontrado na listagem.<br>"; // Mensagem se não houver alunos
-        } else {
-            echo "Total de alunos encontrados: " . count($alunos) . "<br>"; // Mostra total de alunos
-        }
-
-        
-        include('../views/aluno/listar.php'); // Inclui a view
+     public function listar()
+    {
+        $aluno = new Aluno;
+        $alunos = $aluno->listarAlunos();
+        return $alunos;
     }
 } 
-
-$x=new AlunoController();
-
-$x->listar();
-
-$lista = $x;
-print_r($lista);
 ?>
