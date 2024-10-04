@@ -10,11 +10,7 @@ if (isset($_GET['action'])) {
         $controller->cadastrar();
     } elseif ($_GET['action'] === 'listar') {
         $controller->listar();
-    } else {
-        echo "Ação inválida!";
     }
-} else {
-    echo "Nenhuma ação foi passada!<br>";  // Depuração: Se não houver ação
 }
 
 class AlunoController
@@ -34,9 +30,7 @@ class AlunoController
             
             } else {
                 echo "Dados inválidos!<br>";
-            }
-        } else {
-            echo "Método não é POST!<br>";
+            }        
         }
     }
 

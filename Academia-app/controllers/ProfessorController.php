@@ -1,11 +1,16 @@
 <?php 
 include('../models/Professor.php');
 
-if(isset($_GET['action']) && $_GET['action'] == 'cadastrar'){
+if (isset($_GET['action'])) {
     $controller = new ProfessorController();
-
-    $controller->cadastrar();
+    
+    if ($_GET['action'] === 'cadastrar') {
+        $controller->cadastrar();
+    } elseif ($_GET['action'] === 'listar') {
+        $controller->listar();
+    }
 }
+
     Class ProfessorController{
         public function cadastrar(){
             if($_SERVER['REQUEST_METHOD']==='POST'){
@@ -19,6 +24,13 @@ if(isset($_GET['action']) && $_GET['action'] == 'cadastrar'){
                     $profModel->cadastrarProfessor($nome,$email,$telefone,$especialidade);
                 }
             }
+        }
+
+        public function listar()
+        {
+            $professor = new Professor();
+            $professores = $professor->listarProfessores();
+            return $professores;
         }
     }
 ?>
