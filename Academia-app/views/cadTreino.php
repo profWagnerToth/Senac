@@ -1,4 +1,4 @@
-<?php include('../../includes/header.php') ?>
+<?php include('../includes/header.php') ?>
 <!DOCTYPE html>
 <html lang="pt-br">
 
@@ -11,7 +11,8 @@
 <body>
     <div class="container">
         <h1> Cadastrar Treinos </h1>
-        <form action="../../controllers/treinoController.php?action=cadastrar" method="POST">
+        <form action="../controllers/treinoController.php?action=cadastrar" method="POST">
+            
 
             <div class="mb-3">
                 <label for="descricao" class="form-label">Descrição de Treino</label>
@@ -33,6 +34,6 @@
 
     </div>
 </body>
-<?php include('../../includes/footer.php') ?>
+<?php include('../includes/footer.php') ?>
 
 </html>

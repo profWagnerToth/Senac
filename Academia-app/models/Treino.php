@@ -13,5 +13,10 @@ class Treino{
 
         $cadTreino->execute([$descricao,$idAluno,$idProfessor]);
     }
+
+    public function listarTreinos(){
+        $listTreino = $this->db->query("SELECT * FROM Treinos");
+        return $listTreino->fetchAll(PDO::FETCH_ASSOC);
+    }
 }
 ?>
