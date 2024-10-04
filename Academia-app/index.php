@@ -24,8 +24,8 @@
                 <div class="card-body">
                     <h5 class="card-title">Gerenciar Treinos</h5>
                     <p class="card-text">Cadastrar, listar e editar treinos.</p>
-                    <a href="treinos/listar" class="btn btn-primary">Listar Treinos</a>
-                    <a href="treinos/cadastrar" class="btn btn-success mt-2">Cadastrar Treino</a>
+                    <a href="views/listTreino.php" class="btn btn-primary">Listar Treinos</a>
+                    <a href="views/cadTreino.php" class="btn btn-success mt-2">Cadastrar Treino</a>
                 </div>
             </div>
         </div>
