@@ -36,8 +36,8 @@
                 <div class="card-body">
                     <h5 class="card-title">Gerenciar Professores</h5>
                     <p class="card-text">Cadastrar, listar e editar professores.</p>
-                    <a href="professores/listar" class="btn btn-primary">Listar Professores</a>
-                    <a href="professores/cadastrar" class="btn btn-success mt-2">Cadastrar Professor</a>
+                    <a href="views/listProf.php" class="btn btn-primary">Listar Professores</a>
+                    <a href="views/cadProf.php" class="btn btn-success mt-2">Cadastrar Professor</a>
                 </div>
             </div>
         </div>

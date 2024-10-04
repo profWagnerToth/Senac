@@ -13,5 +13,10 @@ class Professor{
 
         $cadProf->execute([$nome,$email,$telefone,$especialidade]);
     }
+
+    public function listarProfessores(){
+        $listProfessor = $this->db->query("SELECT * FROM Professores");
+        return $listProfessor->fetchAll(PDO::FETCH_ASSOC);
+    }
 }
 ?>
