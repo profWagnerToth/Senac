@@ -31,13 +31,7 @@ class AlunoController
             if ($nome && $email && $telefone && $data_nascimento && $genero) {
                 $alunoModel = new Aluno();
                 $alunoModel->cadastrarAluno($nome, $email, $telefone, $data_nascimento, $genero);
-                /*
-                try {
-                    echo "Aluno cadastrado com sucesso!<br>";
-                } catch (Exception $e) {
-                    echo "Erro ao cadastrar o aluno: " . $e->getMessage();
-                }
-                */
+            
             } else {
                 echo "Dados inválidos!<br>";
             }
