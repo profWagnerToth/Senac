@@ -55,7 +55,7 @@ class AlunoController
 
             if ($id && $nome && $email && $telefone && $data_nascimento && $genero) {
                 $alunoModel = new Aluno();
-                $alunoModel->atualizarAluno($id, $nome, $email, $telefone, $data_nascimento, $genero);
+                $alunoModel->editarAluno($id, $nome, $email, $telefone, $data_nascimento, $genero);
                 header('Location: listAluno.php'); // Redireciona após editar
             } else {
                 echo "Dados inválidos!<br>";
