@@ -1,8 +1,6 @@
 <?php
-// Usar caminho absoluto para evitar erros de diretório
 include_once dirname(__DIR__) . '/models/Aluno.php';
 
-// A verificação das ações foi reorganizada para corrigir o erro
 if (isset($_GET['action'])) {
     $controller = new AlunoController();
     
@@ -10,11 +8,14 @@ if (isset($_GET['action'])) {
         $controller->cadastrar();
     } elseif ($_GET['action'] === 'listar') {
         $controller->listar();
+    } elseif ($_GET['action'] === 'editar') {
+        $controller->editar();
     }
 }
 
 class AlunoController
 {
+    // Método para cadastrar aluno (já existente)
     public function cadastrar()
     {
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
@@ -27,18 +28,39 @@ class AlunoController
             if ($nome && $email && $telefone && $data_nascimento && $genero) {
                 $alunoModel = new Aluno();
                 $alunoModel->cadastrarAluno($nome, $email, $telefone, $data_nascimento, $genero);
-            
             } else {
                 echo "Dados inválidos!<br>";
-            }        
+            }
         }
     }
 
-     public function listar()
+    // Método para listar alunos (já existente)
+    public function listar()
     {
-        $aluno = new Aluno;
+        $aluno = new Aluno();
         $alunos = $aluno->listarAlunos();
         return $alunos;
     }
-} 
+
+    // Novo: Método para editar um aluno
+    public function editar()
+    {
+        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+            $id = $_POST['id'];
+            $nome = $_POST['nome'];
+            $email = $_POST['email'];
+            $telefone = $_POST['telefone'];
+            $data_nascimento = $_POST['data_nascimento'];
+            $genero = $_POST['genero'];
+
+            if ($id && $nome && $email && $telefone && $data_nascimento && $genero) {
+                $alunoModel = new Aluno();
+                $alunoModel->atualizarAluno($id, $nome, $email, $telefone, $data_nascimento, $genero);
+                header('Location: listAluno.php'); // Redireciona após editar
+            } else {
+                echo "Dados inválidos!<br>";
+            }
+        }
+    }
+}
 ?>
