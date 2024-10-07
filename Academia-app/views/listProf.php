@@ -1,9 +1,9 @@
 <?php 
-    include ('../includes/header.php');
-    include ('../models/professor.php');    
-    $Professor = new Professor();
-    $Professores = $Professor->listarProfessores();
- ?>
+include ('../includes/header.php');
+include ('../models/professor.php');    
+$Professor = new Professor();
+$Professores = $Professor->listarProfessores();
+?>
 <div class="container mt-5">
     <h2>Lista de Professores</h2>
     <table class="table">
@@ -15,6 +15,7 @@
                 <th scope="col">Telefone</th>
                 <th scope="col">Especialidade</th>               
                 <th scope="col">Data Contratação</th>
+                <th scope="col">Ações</th>
             </tr>
         </thead>
         <tbody>
@@ -26,6 +27,9 @@
                     <td><?php echo $Professor['telefone']; ?></td>
                     <td><?php echo $Professor['especialidade']; ?></td>                    
                     <td><?php echo $Professor['data_contratacao']; ?></td>
+                    <td>
+                        <a href="editarProf.php?id=<?php echo $Professor['id']; ?>" class="btn btn-warning">Editar</a>
+                    </td>
                 </tr>
             <?php endforeach; ?>
         </tbody>
