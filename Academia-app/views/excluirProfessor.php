@@ -8,4 +8,3 @@ if (isset($_GET['id'])) {
 }
 include_once '../includes/footer.php';
 ?>
-
