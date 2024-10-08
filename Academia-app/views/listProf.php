@@ -29,6 +29,7 @@ $Professores = $Professor->listarProfessores();
                     <td><?php echo $Professor['data_contratacao']; ?></td>
                     <td>
                         <a href="editarProf.php?id=<?php echo $Professor['id']; ?>" class="btn btn-warning">Editar</a>
+                        <a href="excluirProfessor.php?id=<?php echo $Professor['id']; ?>" class="btn btn-danger" onclick="return confirm('Você tem certeza que deseja excluir este professor?');">Excluir</a>
                     </td>
                 </tr>
             <?php endforeach; ?>
