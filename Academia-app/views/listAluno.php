@@ -31,6 +31,7 @@
                     <td><?php echo $aluno['data_cadastro']; ?></td>
                     <td>
                         <a href="editarAluno.php?id=<?php echo $aluno['id']; ?>" class="btn btn-warning">Editar</a>
+                        <a href="excluirAluno.php?id=<?php echo $aluno['id']; ?>" class="btn btn-danger" onclick="return confirm('Você tem certeza que deseja excluir este aluno?');">Excluir</a>
                     </td>
                 </tr>
             <?php endforeach; ?>

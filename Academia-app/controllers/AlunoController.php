@@ -10,6 +10,8 @@ if (isset($_GET['action'])) {
         $controller->listar();
     } elseif ($_GET['action'] === 'editar') {
         $controller->editar();
+    }elseif ($_GET['action'] === 'excluir') {
+        $controller->editar();
     }
 }
 
@@ -42,7 +44,7 @@ class AlunoController
         return $alunos;
     }
 
-    // Novo: Método para editar um aluno
+    // Método para editar um aluno (já existente)
     public function editar()
     {
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
