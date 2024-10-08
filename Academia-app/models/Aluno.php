@@ -29,6 +29,11 @@ class Aluno
         return $buscaAluno->fetch(PDO::FETCH_ASSOC);
     }
 
+    public function editarAluno($id, $nome, $email, $telefone, $data_nascimento, $genero) {
+        $editProf = $this->db->prepare("UPDATE alunos SET nome=?, email=?, telefone=?, data_nascimento=?, genero=? WHERE id = ?");
+        $editProf->execute([$nome, $email, $telefone, $data_nascimento, $genero,$id]);
+    }
+
     public function excluirAluno($id) {
         try {
             // Tentar excluir o aluno
