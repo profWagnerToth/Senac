@@ -1,25 +1,23 @@
 <?php
-include_once '../models/Aluno.php'; // Certifique-se de que o caminho está correto
+include_once dirname(__DIR__) . '/models/Aluno.php';
 
-// Verifique se a ação foi passada na URL
-if (isset($_GET['action']) && $_GET['action'] === 'cadastrar') {
-    // echo "Chamando a função cadastrar()!<br>";  // Depuração: Verificar se a rota está funcionando
+if (isset($_GET['action'])) {
     $controller = new AlunoController();
-    $controller->cadastrar();
-} else {
-    echo "Nenhuma ação foi passada!<br>";  // Depuração: Se não houver ação
-}
-
-if (isset($_GET['action']) && $_GET['action'] === 'listar') {
-    // echo "Chamando a função listar()!<br>";  // Depuração: Verificar se a rota está funcionando
-    $controller = new AlunoController();
-    $controller->listar();
-} else {
-    echo "Nenhuma ação foi passada!<br>";  // Depuração: Se não houver ação
+    
+    if ($_GET['action'] === 'cadastrar') {
+        $controller->cadastrar();
+    } elseif ($_GET['action'] === 'listar') {
+        $controller->listar();
+    } elseif ($_GET['action'] === 'editar') {
+        $controller->editar();
+    }elseif ($_GET['action'] === 'excluir') {
+        $controller->editar();
+    }
 }
 
 class AlunoController
 {
+    // Método para cadastrar aluno (já existente)
     public function cadastrar()
     {
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
@@ -28,32 +26,43 @@ class AlunoController
             $telefone = $_POST['telefone'];
             $data_nascimento = $_POST['data_nascimento'];
             $genero = $_POST['genero'];
-            
-            /*
-            var_dump($nome, $email, $telefone, $data_nascimento, $genero);  // Depuração: Mostrar os dados
-            */
 
             if ($nome && $email && $telefone && $data_nascimento && $genero) {
                 $alunoModel = new Aluno();
                 $alunoModel->cadastrarAluno($nome, $email, $telefone, $data_nascimento, $genero);
-                /*
-                try {
-                    echo "Aluno cadastrado com sucesso!<br>";
-                } catch (Exception $e) {
-                    echo "Erro ao cadastrar o aluno: " . $e->getMessage();
-                }
             } else {
                 echo "Dados inválidos!<br>";
             }
-        } else {
-            echo "Método não é POST!<br>";
-        } */
-              }
         }
     }
 
-    public function listar(){
-        
+    // Método para listar alunos (já existente)
+    public function listar()
+    {
+        $aluno = new Aluno();
+        $alunos = $aluno->listarAlunos();
+        return $alunos;
+    }
+
+    // Método para editar um aluno (já existente)
+    public function editar()
+    {
+        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+            $id = $_POST['id'];
+            $nome = $_POST['nome'];
+            $email = $_POST['email'];
+            $telefone = $_POST['telefone'];
+            $data_nascimento = $_POST['data_nascimento'];
+            $genero = $_POST['genero'];
+
+            if ($id && $nome && $email && $telefone && $data_nascimento && $genero) {
+                $alunoModel = new Aluno();
+                $alunoModel->editarAluno($id, $nome, $email, $telefone, $data_nascimento, $genero);
+                header('Location: listAluno.php'); // Redireciona após editar
+            } else {
+                echo "Dados inválidos!<br>";
+            }
+        }
     }
 }
 ?>
