@@ -10,7 +10,7 @@ use Kreait\Firebase\ServiceAccount;
 
 //Criando conexão com BD Realtime Database Firebase
 $factory = (new Factory())
-//->withServiceAccount(__DIR__.'/firebase_chave.json') 
+->withServiceAccount(__DIR__.'/firebase_chave.json') 
 ->withDatabaseUri('https://fir-php-e50ee-default-rtdb.firebaseio.com/'); //Link de acesso ao Realtime Databse do Firebase.
 
 //Instanciando o serviço do Realtime Database

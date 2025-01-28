@@ -14,7 +14,7 @@ $msg = "";
 
 // Criando conexão com o Firebase (Realtime Database e Authentication)
 $factory = (new Factory())
-    ->withServiceAccount(__DIR__.'/chave_firebase.json') 
+    ->withServiceAccount(__DIR__.'/firebase_chave.json') 
     ->withDatabaseUri('https://fir-php-e50ee-default-rtdb.firebaseio.com/'); // Link de acesso ao Realtime Database do Firebase.
 
 // Executa quando o formulário for submetido e o botão "Cadastrar" for clicado

@@ -9,6 +9,7 @@ $msg = "";
 
 // Criando conexão com BD Realtime Database Firebase
 $factory = (new Factory())
+    ->withServiceAccount(__DIR__.'/firebase_chave')
     ->withDatabaseUri('https://fir-php-e50ee-default-rtdb.firebaseio.com/'); // Link de acesso ao Realtime Database do Firebase.
 
 // Instanciando o serviço do Realtime Database
