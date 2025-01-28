@@ -1,36 +1,40 @@
 <?php
-//Requisição do autolod Firebase
+// Requisição do autoload Firebase
 require __DIR__.'/vendor/autoload.php';
 
-//Acessando a biblioteca Kreait Firebase PhP SDK
+// Acessando a biblioteca Kreait Firebase PHP SDK
 use Kreait\Firebase\Factory;
 
-$msg="";
+$msg = "";
 
-//Criando conexão com BD Realtime Database Firebase
+// Criando conexão com BD Realtime Database Firebase
 $factory = (new Factory())
-->withDatabaseUri('https://fir-php-e50ee-default-rtdb.firebaseio.com/'); //Link de acesso ao Realtime Databse do Firebase.
+    ->withDatabaseUri('https://fir-php-e50ee-default-rtdb.firebaseio.com/'); // Link de acesso ao Realtime Database do Firebase.
 
-//Instanciando o serviço do Realtime Database
+// Instanciando o serviço do Realtime Database
 $database = $factory->createDatabase();
 
-//Sanitizando dados de entrada
-$nome = filter_var($_POST['nome'], FILTER_SANITIZE_STRING);
-$email = filter_var($_POST['email'], FILTER_SANITIZE_EMAIL);
+// Verificando se o botão 'btn_Cadastrar' foi pressionado
+if (isset($_POST['btn_Cadastrar'])) {
 
-$novoContato = [
-    'nome'=>$nome,
-    'email'=>$email
-];
+    // Sanitizando dados de entrada
+    $nome = filter_var($_POST['nome'], FILTER_SANITIZE_STRING);
+    $email = filter_var($_POST['email'], FILTER_SANITIZE_EMAIL);
 
-try{
-    $database->getReference('contatos/'.$_POST['id'])->set($novoContato);
-    $msg="Contato adicionado com sucesso!";
-}catch (Execption $e){
-    $msg="Erro ao adicionar contato: ". $e->getMessage();
+    // Criando o array de dados a serem enviados
+    $novoContato = [
+        'nome' => $nome,
+        'email' => $email
+    ];
+
+    try {
+        // Inserindo os dados no Firebase
+        $database->getReference('contatos/' . $_POST['id'])->set($novoContato);
+        $msg = "Contato adicionado com sucesso!";
+    } catch (Exception $e) {
+        $msg = "Erro ao adicionar contato: " . $e->getMessage();
+    }
 }
-echo $msg;
-
 ?>
 <!DOCTYPE html>
 <html lang="pt-br">
@@ -62,9 +66,16 @@ echo $msg;
         </p>
 
         <p>
-            <input type="submit" name="btn_Cadastrar" id="Cad" Value="Cadastrar"/>
+            <input type="submit" name="btn_Cadastrar" id="Cad" value="Cadastrar"/>
         </p>
     </form>
+
+    <?php
+    // Exibindo a mensagem de sucesso ou erro
+    if ($msg != "") {
+        echo "<p>$msg</p>";
+    }
+    ?>
 </body>
 
 </html>
