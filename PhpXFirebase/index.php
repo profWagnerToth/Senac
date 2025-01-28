@@ -4,9 +4,13 @@ require __DIR__.'/vendor/autoload.php';
 
 //Acessando a biblioteca Kreait Firebase PhP SDK
 use Kreait\Firebase\Factory;
+//Acessando a biblioteca ServiceAccount
+use Kreait\Firebase\ServiceAccount;
+
 
 //Criando conexão com BD Realtime Database Firebase
 $factory = (new Factory())
+->withServiceAccount(__DIR__.'/chave_firebase.json') /*Passmos junto a chamada da conexão com o Realtime a chave de autenticação usando o serviço ServiceAccont e como paramentro o caminho onde está a chave de autenticação. */
 ->withDatabaseUri('https://fir-php-e50ee-default-rtdb.firebaseio.com/'); //Link de acesso ao Realtime Databse do Firebase.
 
 //Instanciando o serviço do Realtime Database
